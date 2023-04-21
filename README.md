@@ -4,9 +4,19 @@ Implement a method that accepts an array of prices and then outputs the best day
 and the best day to sell (day 2). Buy must occur before sell. 
 
 This method will compare each element of the array against the others and determine if 
-the given element is either the lowest point to buy or the highest point to sell.
+the given element is either the lowest point to buy and the highest point to sell.
 
 The logic should look something like this:
+I think that this should be accomplished using nested reduce statements (god help me)
+1. We will determine the lowest position of the array to buy
+    values[0..-2].reduce { |lowest, price| lowest.nil? || price < lowest ? price : lowest }
+2. Then in the next reduce statement we will take those values and subtract them from the values in the array.
+3. We will need to specify the range to be no further left than the current lowest value in the array that is being subtracted
+    price[lowest..-1].reduce
+4. 
+5. 
+
+
 
 BUY:
 1. Is day zero less than day 1? If so, keep day 0 and compare against day 2 until day n. 
