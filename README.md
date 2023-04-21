@@ -12,8 +12,8 @@ I think that this should be accomplished using nested reduce statements (god hel
     values[0..-2].reduce { |lowest, price| lowest.nil? || price < lowest ? price : lowest }
 2. Then in the next reduce statement we will take those values and subtract them from the values in the array.
 3. We will need to specify the range to be no further left than the current lowest value in the array that is being subtracted
-    price[lowest..-1].reduce
-4. 
+    values[lowest..-1].reduce { |diff, price| price - diff > diff ? diff : ???}
+4. Might need to switch the reduce statements to make this work the way I want it to
 5. 
 
 
