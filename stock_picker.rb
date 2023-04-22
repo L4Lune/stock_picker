@@ -10,22 +10,22 @@ def stock_picker(values)
     diff = 0
 
     i = 0
-    static_index = 0
+    held_index = 0
 
-    while static_index < (values.length - 1) do
+    while held_index < (values.length - 1) do
         values.each_with_index.reduce(0) do |diff, (price, i)| 
-            if values.index(values[i]) > values.index(values[static_index])
-                diff = values[i] - (values[static_index])
+            if values.index(values[i]) > values.index(values[held_index])
+                diff = values[i] - (values[held_index])
                 # p "#{values[i]} - #{values[static_index]} = #{diff}"
                 if diff > best_delta
                     best_delta = diff
-                    buy_price_index = values.find_index(values[static_index])
+                    buy_price_index = values.find_index(values[held_index])
                     sell_price_index = values.find_index(values[i])
                     buy_sell.replace([buy_price_index, sell_price_index])
                 end
             end
         end
-        static_index+=1
+        held_index+=1
     end
     p buy_sell
     p "You made $#{best_delta} on this trade!"
